@@ -34,8 +34,17 @@
 }
 
 .card {
-  padding: 2em;
-}
+  padding: 1em;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 10px 0 rgba(96, 187, 173, 0.863);
+    transition: 0.3s;
+    margin-top: 20px;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 6px 10px 0 rgb(126, 254, 237);
+  }
 
 .read-the-docs {
   color: #888;

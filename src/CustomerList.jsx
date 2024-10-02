@@ -1,0 +1,44 @@
+import './App.css'
+import React, {useState, useEffect} from 'react'
+import Customer from './Customer'
+import CustomerService from './services/Customer'
+import CustomerAdd from './CustomerAdd'
+
+const CustomerList = ({setIsPositive, setShowMessage, setMessage}) => {
+
+  //Komponentin tilan määritys
+const [customers, setCustomers] = useState([])
+const [showCustomers, setShowCustomers] = useState(false)
+const [lisäystila, setLisäystila] = useState(false)
+
+useEffect(() => {
+ CustomerService.getAll()
+ .then(data => {
+    setCustomers(data)
+ })
+},[lisäystila]
+)
+
+  return (
+    <>
+        <h4><button style={{ cursor: 'pointer' }}
+               onClick={() => setShowCustomers(!showCustomers)}>Asiakkaat</button>
+
+                {!lisäystila && <button onClick={() => setLisäystila(true)}>Uusi asiakas</button>}</h4>
+
+                {lisäystila && <CustomerAdd setLisäystila={setLisäystila} 
+                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                />}
+        {
+            showCustomers && customers && customers.map( c => (
+                <>
+                <Customer key={c.customerId} customer={c}/>
+                </>
+            )
+            )
+        }
+
+    </>
+  )
+}
+export default CustomerList
