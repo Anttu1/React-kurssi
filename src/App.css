@@ -34,6 +34,7 @@
 }
 
 .card {
+  min-width: 800px;
   padding: 1em;
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 10px 0 rgba(96, 187, 173, 0.863);
@@ -48,4 +49,33 @@
 
 .read-the-docs {
   color: #888;
+}
+.neg {
+  color: rgb(248, 8, 92);
+  background: lightgrey;
+  font-size: 36px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10%;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.pos {
+  color: rgb(17, 226, 212);
+  background: lightgrey;
+  font-size: 36px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10%;
+  width: 70%;
+  margin-left: 15%;
 }

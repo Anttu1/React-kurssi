@@ -1,22 +1,68 @@
 import './App.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import CustomerService from './services/Customer'
 
 //props on nimeltään customer
-const Customer = ({customer}) => {
+const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
   //Komponentin tilan määritys
 const [showDetails, setShowDetails] = useState(false)
 
+const deleteCustomer = (customer) => {
+ let vastaus = window.confirm(`Poistetaan asiakas ${customer.companyName}`)
+
+ if (vastaus === true) {
+ CustomerService.remove(customer.customerId)
+ .then( res => {
+    if (res.status === 200) {
+      setMessage(`Poistettu asiakas ${customer.companyName} onnistuneesti.`)
+      setIsPositive(true)
+      setShowMessage(true)
+      window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+      //Ilmoituksen piilotus
+      setTimeout(() => {
+      setShowMessage(false)},
+      5000
+      )
+      reloadNow(!reload)
+      }
+        }
+  )
+  .catch(error => {
+    setMessage(error)
+    setIsPositive(false)
+    setShowMessage(true)
+    window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+
+    setTimeout(() => {
+      setShowMessage(false)
+     }, 6000)
+})
+}
+//Jos poisto halutaankin perua
+else {
+  setMessage('Poisto peruttu onnistuneesti.')
+      setIsPositive(true)
+      setShowMessage(true)
+      window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+
+      // Ilmoituksen piilotus
+      setTimeout(() => {
+      setShowMessage(false)},
+      5000
+      )
+  }
+}
+
+
   return (
     <div className='card'>
         
-       <h4 onMouseEnter={() => setShowDetails(true)}
-       onMouseLeave={() => setShowDetails(false)}
-       >
-           {customer.companyName}
+       <h4 onClick={() => setShowDetails(!showDetails)}>     
+       {customer.companyName}  
         </h4>
 
-       {showDetails && <div className="customerDetails">
+       {showDetails && <div>
                 <table>
                     <thead>
                         <tr>
@@ -36,6 +82,8 @@ const [showDetails, setShowDetails] = useState(false)
                             <td>{customer.country}</td>
                         </tr>
                     </tbody>
+                    <button onClick={() => deleteCustomer(customer)}>Poista</button>
+                    <button onClick={() => editCustomer(customer)}>Muokkaa</button>
                 </table></div>}
     </div>
   )

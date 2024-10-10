@@ -75,3 +75,7 @@ input {
   margin: 2px;
   padding: 4px;
 }
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
