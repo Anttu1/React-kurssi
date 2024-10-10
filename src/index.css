@@ -74,6 +74,8 @@ th, td {
 input {
   margin: 2px;
   padding: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 table {
   margin-left: auto;

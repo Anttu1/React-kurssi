@@ -51,14 +51,14 @@
   color: #888;
 }
 .neg {
-  color: rgb(248, 8, 92);
-  background: lightgrey;
-  font-size: 36px;
+  color: rgb(157, 6, 59);
+  background: rgba(211, 211, 211, 0.107);
+  font-size: 30px;
   font-weight: bold;
   border-style: solid;
   border-width: 3px;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 2px;
+  padding: 20px;
   margin-bottom: 10px;
   margin-top: 10%;
   width: 70%;
@@ -66,14 +66,14 @@
 }
 
 .pos {
-  color: rgb(17, 226, 212);
-  background: lightgrey;
-  font-size: 36px;
+  color: rgb(2, 149, 139);
+  background: rgba(211, 211, 211, 0.107);
+  font-size: 30px;
   font-weight: bold;
   border-style: solid;
   border-width: 3px;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 2px;
+  padding: 20px;
   margin-bottom: 10px;
   margin-top: 10%;
   width: 70%;

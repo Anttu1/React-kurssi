@@ -37,8 +37,8 @@ const deleteCustomer = (customer) => {
     setTimeout(() => {
       setShowMessage(false)
      }, 6000)
-})
-}
+  })
+  }
 //Jos poisto halutaankin perua
 else {
   setMessage('Poisto peruttu onnistuneesti.')

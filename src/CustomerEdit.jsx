@@ -65,51 +65,60 @@ const handleSubmit = (event) => {
 
   return (
     <div id="edit">
-       <h2>Customer Edit</h2>
+       <h2>Muokkaa asiakasta</h2>
 
        <form onSubmit={handleSubmit}>
        <div>
                 <input type="text" value={newCustomerId} disabled />
             </div>
+            Company name:
             <div>
-                <input type="text" value={newCompanyName} placeholder="Company name"
+            <input type="text" value={newCompanyName}
                     onChange={({ target }) => setNewCompanyName(target.value)} required />
             </div>
+            Contact name:
             <div>
-                <input type="text" value={newContactName} placeholder="Contact name"
+                <input type="text" value={newContactName}
                     onChange={({ target }) => setNewContactName(target.value)} />
             </div>
+            Contact title:
             <div>
-                <input type="text" value={newContactTitle} placeholder="Contact title"
+                <input type="text" value={newContactTitle}
                     onChange={({ target }) => setNewContactTitle(target.value)} />
             </div>
+            Country:
             <div>
-                <input type="text" value={newCountry} placeholder="Country"
+                <input type="text" value={newCountry}
                     onChange={({ target }) => setNewCountry(target.value)} />
             </div>
+            Address:
             <div>
-                <input type="text" value={newAddress} placeholder="Address"
+                <input type="text" value={newAddress}
                     onChange={({ target }) => setNewAddress(target.value)} />
             </div>
+            City:
             <div>
-                <input type="text" value={newCity} placeholder="City"
+                <input type="text" value={newCity}
                     onChange={({ target }) => setNewCity(target.value)} />
             </div>
+            Postal code:
             <div>
-                <input type="text" value={newPostalCode} placeholder="Postal code"
+            <input type="text" value={newPostalCode}
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>
+            Phone:
             <div>
-                <input type="text" value={newPhone} placeholder="Phone"
+               <input type="text" value={newPhone}
                     onChange={({ target }) => setNewPhone(target.value)} />
             </div>
+            Fax:
             <div>
-                <input type="text" value={newFax} placeholder="Fax"
+                <input type="text" value={newFax}
                     onChange={({ target }) => setNewFax(target.value)} />
             </div>
          
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+         <button type='submit' value='save'>Tallenna</button>
+         <button type='button' value='back' onClick={() => setMuokkaustila(false)}>Takaisin</button>
        </form>
 
     </div>

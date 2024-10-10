@@ -37,6 +37,10 @@ const editCustomer = (customer) => {
                 {lisäystila && <CustomerAdd setLisäystila={setLisäystila} 
                 setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
                 />}
+                {muokkaustila && <CustomerEdit setMuokkaustila={setMuokkaustila} 
+                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                muokattavaCustomer={muokattavaCustomer}
+                />}
         {
             showCustomers && customers && customers.map(c => (
                 
