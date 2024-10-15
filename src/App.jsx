@@ -1,37 +1,63 @@
-import React, {useState} from 'react'
 import './App.css'
+import React, {useState} from 'react'
 import Laskuri from './Laskuri'
-import Viesti from './Viesti'
 import Posts from './Posts'
-import CustomerList  from './CustomerList'
+import CustomerList from './customers/CustomerList'
 import Message from './Message'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const App = () => {
-
-//App komponentin tila
-const [showLaskuri, setShowLaskuri] = useState(false)
-//Statet messagen näyttämistä varten
+    
+// App componentin statet
+// Statet messagen näyttämistä varten
 const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
 const [isPositive, setIsPositive] = useState(false)
 
-const huomio = () => {
-  alert("Huomio!")
-}
-
-  return (
+    return (
       <div className="App">
-        <h1>Hello from React!</h1>
-        {showMessage && <Message message={message} isPositive={isPositive}/>}
-        {showLaskuri && <Laskuri huomio={huomio}/>}
-        {/* {showLaskuri === true ? <Laskuri/> : null} */}
-        {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
-        {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
-        {<Posts/>}
-        {<CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>}
-        <Viesti teksti="Tervehdys app komponentista."/>
-      </div>
-  )
-}
+        <Router>        
+  
+            <Navbar bg="dark" variant="dark">
+              <Nav className="mr-auto">
+                  <Nav.Link href='/customers'>Customers</Nav.Link>
+                  <Nav.Link href='/posts'>Some highlights</Nav.Link>
+                  <Nav.Link href='/users'>Users</Nav.Link>
+                  <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+              </Nav>
+            </Navbar>
+            
+            <h2>Northwind Corporation</h2>
+  
+            {showMessage && <Message message={message} isPositive={isPositive} />}
+  
+            <Routes>
+                  <Route path="/customers"
+                  element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+                  setShowMessage={setShowMessage} />}>
+                  </Route>
+  
+            {/* <Route path="/users"
+                  element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
+                  setShowMessage={setShowMessage} />}> 
+            </Route> */}
+            <Route path="/posts"
+            element={<Posts info="Nämä ovat yhtiön sosiaalisen median parhaita poimintoja."
+            tervehdys="Hei!"/>}>
+            </Route>
 
+            <Route path="/laskuri"
+            element={<Laskuri />}>
+            </Route>
+  
+            </Routes>
+        </Router>
+            
+        </div>
+    )
+  }
 export default App

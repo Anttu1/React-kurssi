@@ -1,6 +1,6 @@
-import './App.css'
+import '../App.css'
 import React, {useState} from 'react'
-import CustomerService from './services/Customer'
+import CustomerService from '../services/Customer'
 
 //props on nimeltään customer
 const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {

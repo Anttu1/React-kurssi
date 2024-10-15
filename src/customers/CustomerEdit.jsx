@@ -1,6 +1,6 @@
-import './App.css'
+import '../App.css'
 import React, {useState} from 'react'
-import CustomerService from './services/Customer'
+import CustomerService from '../services/Customer'
 
 const CustomerEdit = ({setMuokkaustila, setIsPositive, setMessage, setShowMessage, muokattavaCustomer}) => {
 

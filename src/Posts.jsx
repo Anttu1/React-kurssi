@@ -17,7 +17,7 @@ useEffect(() => {
 )
 
   return (
-    <>
+    <div className='posts'>
         <button onClick={() => setShowPosts(!showPosts)}>Postaukset</button>
 
         {
@@ -30,7 +30,7 @@ useEffect(() => {
                 </>
             )
         }
-    </>
+    </div>
   )
 }
 export default Posts
