@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import Laskuri from './Laskuri'
 import Posts from './Posts'
 import CustomerList from './customers/CustomerList'
+import UserList from './users/UserList'
 import Message from './Message'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -41,10 +42,11 @@ const [isPositive, setIsPositive] = useState(false)
                   setShowMessage={setShowMessage} />}>
                   </Route>
   
-            {/* <Route path="/users"
+             <Route path="/users"
                   element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
                   setShowMessage={setShowMessage} />}> 
-            </Route> */}
+            </Route> 
+
             <Route path="/posts"
             element={<Posts info="Nämä ovat yhtiön sosiaalisen median parhaita poimintoja."
             tervehdys="Hei!"/>}>

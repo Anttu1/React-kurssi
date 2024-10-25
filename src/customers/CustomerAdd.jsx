@@ -39,7 +39,7 @@ const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
         CustomerService.create(newCustomer)
         .then(response => {
           if (response.status === 200) {
-           setMessage("Added new Customer: " + newCustomer.companyName)
+           setMessage("Lisätty uusi asiakas: " + newCustomer.companyName)
            setIsPositive(true)
            setShowMessage(true)
           
