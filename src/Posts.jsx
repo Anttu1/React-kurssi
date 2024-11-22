@@ -18,8 +18,10 @@ useEffect(() => {
 
   return (
     <div className='posts'>
+      <br></br>
+      <h4>
         <button onClick={() => setShowPosts(!showPosts)}>Postaukset</button>
-
+        </h4>
         {
             showPosts && posts && posts.map(p => 
                 <>

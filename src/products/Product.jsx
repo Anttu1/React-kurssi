@@ -1,21 +1,21 @@
 import '../App.css'
 import React, {useState} from 'react'
-import CustomerService from '../services/Customer'
+import ProductService from '../services/Product'
 
-//props on nimeltään customer
-const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
+//props on nimeltään product
+const Product = ({product, editProduct, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
   //Komponentin tilan määritys
 const [showDetails, setShowDetails] = useState(false)
 
-const deleteCustomer = (customer) => {
- let vastaus = window.confirm(`Poistetaan asiakas ${customer.companyName}`)
+const deleteProduct = (product) => {
+ let vastaus = window.confirm(`Poistetaan tuote ${product.productName}`)
 
  if (vastaus === true) {
- CustomerService.remove(customer.customerId)
+ ProductService.remove(product.productId)
  .then( res => {
     if (res.status === 200) {
-      setMessage(`Poistettu asiakas ${customer.companyName} onnistuneesti.`)
+      setMessage(`Poistettu tuote ${product.productName} onnistuneesti.`)
       setIsPositive(true)
       setShowMessage(true)
       window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert
@@ -59,33 +59,33 @@ else {
     <div className='card'>
         
        <h4 onClick={() => setShowDetails(!showDetails)}>     
-       {customer.companyName}  
+       {product.productName}  
         </h4>
 
        {showDetails && <div>
                 <table>
                     <thead>
                         <tr>
-                            <th>Yhteyshenkilö</th>
-                            <th>Puh.numero</th>
-                            <th>Osoite</th>
-                            <th>Kaupunki</th>
-                            <th>Valtio</th>
+                       <th>Tuotteen nimi</th>
+                       <th>Pakkauskoko</th>
+                       <th>Hinta</th>
+                       <th>Varastosaldo</th>
+                       <th>KuvaLinkki</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{customer.contactName}</td>
-                            <td>{customer.phone}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.city}</td>
-                            <td>{customer.country}</td>
+                            <td>{product.productName}</td>
+                            <td>{product.quantityPerUnit}</td>
+                            <td>{product.unitPrice}</td>
+                            <td>{product.unitsInStock}</td>
+                            <td>{product.imageLink}</td>
                         </tr>
                     </tbody>
                 </table>
-                <button onClick={() => editCustomer(customer)}>Muokkaa</button> 
-                <button onClick={() => deleteCustomer(customer)}>Poista</button></div>}
+                <button onClick={() => editProduct(product)}>Muokkaa</button> 
+                <button onClick={() => deleteProduct(product)}>Poista</button></div>}
     </div>
   )
 }
-export default Customer
+export default Product

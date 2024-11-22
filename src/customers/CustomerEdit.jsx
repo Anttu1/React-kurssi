@@ -71,42 +71,42 @@ const handleSubmit = (event) => {
        <div>
                 <input type="text" value={newCustomerId} disabled />
             </div>
-            Company name:
+            Yrityksen nimi:
             <div>
             <input type="text" value={newCompanyName}
                     onChange={({ target }) => setNewCompanyName(target.value)} required />
             </div>
-            Contact name:
+            Yhteyshenkilö:
             <div>
                 <input type="text" value={newContactName}
                     onChange={({ target }) => setNewContactName(target.value)} />
             </div>
-            Contact title:
+            Yhteyshenkilön titteli:
             <div>
                 <input type="text" value={newContactTitle}
                     onChange={({ target }) => setNewContactTitle(target.value)} />
             </div>
-            Country:
-            <div>
-                <input type="text" value={newCountry}
-                    onChange={({ target }) => setNewCountry(target.value)} />
-            </div>
-            Address:
+            Osoite:
             <div>
                 <input type="text" value={newAddress}
                     onChange={({ target }) => setNewAddress(target.value)} />
             </div>
-            City:
-            <div>
-                <input type="text" value={newCity}
-                    onChange={({ target }) => setNewCity(target.value)} />
-            </div>
-            Postal code:
+            Postinumero:
             <div>
             <input type="text" value={newPostalCode}
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>
-            Phone:
+            Kaupunki:
+            <div>
+                <input type="text" value={newCity}
+                    onChange={({ target }) => setNewCity(target.value)} />
+            </div>
+            Valtio:
+            <div>
+                <input type="text" value={newCountry}
+                    onChange={({ target }) => setNewCountry(target.value)} />
+            </div>
+            Puhelinnumero:
             <div>
                <input type="text" value={newPhone}
                     onChange={({ target }) => setNewPhone(target.value)} />

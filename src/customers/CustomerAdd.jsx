@@ -71,39 +71,39 @@ const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
             <h2>Lisää Asiakas</h2>
             <form onSubmit={handleSubmit}>
        <div>
-                <input type="text" value={newCustomerId} placeholder="ID with 5 capital letters" maxLength="5" minLength="5"
+                <input type="text" value={newCustomerId} placeholder="ID (5 isoa kirjainta)" maxLength="5" minLength="5"
                     onChange={({ target }) => setNewCustomerId(target.value)} required />
             </div>
             <div>
-                <input type="text" value={newCompanyName} placeholder="Company name"
+                <input type="text" value={newCompanyName} placeholder="Yrityksen nimi"
                     onChange={({ target }) => setNewCompanyName(target.value)} required />
             </div>
             <div>
-                <input type="text" value={newContactName} placeholder="Contact name"
+                <input type="text" value={newContactName} placeholder="Yhteyshenkilö"
                     onChange={({ target }) => setNewContactName(target.value)} />
             </div>
             <div>
-                <input type="text" value={newContactTitle} placeholder="Contact title"
+                <input type="text" value={newContactTitle} placeholder="Yhteyshenkilön titteli"
                     onChange={({ target }) => setNewContactTitle(target.value)} />
             </div>
             <div>
-                <input type="text" value={newCountry} placeholder="Country"
-                    onChange={({ target }) => setNewCountry(target.value)} />
-            </div>
-            <div>
-                <input type="text" value={newAddress} placeholder="Address"
+                <input type="text" value={newAddress} placeholder="Osoite"
                     onChange={({ target }) => setNewAddress(target.value)} />
             </div>
             <div>
-                <input type="text" value={newCity} placeholder="City"
-                    onChange={({ target }) => setNewCity(target.value)} />
-            </div>
-            <div>
-                <input type="text" value={newPostalCode} placeholder="Postal code"
+                <input type="text" value={newPostalCode} placeholder="Postinumero"
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>
             <div>
-                <input type="text" value={newPhone} placeholder="Phone"
+                <input type="text" value={newCity} placeholder="Kaupunki"
+                    onChange={({ target }) => setNewCity(target.value)} />
+            </div>
+            <div>
+                <input type="text" value={newCountry} placeholder="Valtio"
+                    onChange={({ target }) => setNewCountry(target.value)} />
+            </div>
+            <div>
+                <input type="text" value={newPhone} placeholder="Puhelinnumero"
                     onChange={({ target }) => setNewPhone(target.value)} />
             </div>
             <div>

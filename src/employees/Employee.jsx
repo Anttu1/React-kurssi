@@ -1,21 +1,21 @@
 import '../App.css'
 import React, {useState} from 'react'
-import CustomerService from '../services/Customer'
+import EmployeeService from '../services/Employee'
 
 //props on nimeltään customer
-const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
+const Employee = ({employee, editEmployee, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
   //Komponentin tilan määritys
 const [showDetails, setShowDetails] = useState(false)
 
-const deleteCustomer = (customer) => {
- let vastaus = window.confirm(`Poistetaan asiakas ${customer.companyName}`)
+const deleteEmployee = (employee) => {
+ let vastaus = window.confirm(`Poistetaan työntekijä ${employee.firstName} ${employee.lastName}`)
 
  if (vastaus === true) {
- CustomerService.remove(customer.customerId)
+ EmployeeService.remove(employee.employeeId)
  .then( res => {
     if (res.status === 200) {
-      setMessage(`Poistettu asiakas ${customer.companyName} onnistuneesti.`)
+      setMessage(`Poistettu työntekijä ${employee.firstName} ${employee.lastName} onnistuneesti.`)
       setIsPositive(true)
       setShowMessage(true)
       window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert
@@ -59,33 +59,37 @@ else {
     <div className='card'>
         
        <h4 onClick={() => setShowDetails(!showDetails)}>     
-       {customer.companyName}  
+       {employee.firstName} {employee.lastName}
         </h4>
 
        {showDetails && <div>
                 <table>
                     <thead>
                         <tr>
-                            <th>Yhteyshenkilö</th>
-                            <th>Puh.numero</th>
+                            <th>Ammattinimike</th>
+                            <th>Palkkauspäivä</th>
                             <th>Osoite</th>
+                            <th>Postinumero</th>
                             <th>Kaupunki</th>
                             <th>Valtio</th>
+                            <th>Puhelinnumero</th>                          
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{customer.contactName}</td>
-                            <td>{customer.phone}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.city}</td>
-                            <td>{customer.country}</td>
+                            <td>{employee.title}</td>
+                            <td>{employee.hireDate}</td>
+                            <td>{employee.address}</td>
+                            <td>{employee.postalCode}</td>
+                            <td>{employee.city}</td>
+                            <td>{employee.country}</td>
+                            <td>{employee.homePhone}</td>
                         </tr>
                     </tbody>
                 </table>
-                <button onClick={() => editCustomer(customer)}>Muokkaa</button> 
-                <button onClick={() => deleteCustomer(customer)}>Poista</button></div>}
+                <button onClick={() => editEmployee(employee)}>Muokkaa</button> 
+                <button onClick={() => deleteEmployee(employee)}>Poista</button></div>}
     </div>
   )
 }
-export default Customer
+export default Employee

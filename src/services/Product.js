@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:7219/api/customers"
+const baseUrl = "https://localhost:7219/api/products"
 
 let token = null
 //Tätä metodia kutsutaan aina ennen kuin tehdään muu pyyntö serviceen
@@ -16,11 +16,11 @@ const getAll = () => {
     const request = axios.get(baseUrl, config)
     return request.then(response => response.data)
 }
-const create = newCustomer => {
+const create = newProduct => {
     const config = {
         headers: {Authorization: token},
     }
-    return axios.post(baseUrl, newCustomer, config)
+    return axios.post(baseUrl, newProduct, config)
 }
 const remove = id => {
     const config = {
@@ -28,10 +28,10 @@ const remove = id => {
     }
     return axios.delete(`${baseUrl}/${id}`, config)
 }
-const update = (object) => {
+const update = (product) => {
     const config = {
         headers: {Authorization: token},
     }
-    return axios.put(`${baseUrl}/${object.customerId}`, object, config)
+    return axios.put(`${baseUrl}/${product.productId}`, product, config)
 }
 export default { getAll, create, remove, update, setToken}

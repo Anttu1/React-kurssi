@@ -17,6 +17,11 @@ const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
 const [search, setSearch] = useState("")
 
 useEffect(() => {
+
+const token = localStorage.getItem('token')
+      CustomerService
+        .setToken(token)
+        
  CustomerService.getAll()
  .then(data => {
     setCustomers(data)
@@ -34,6 +39,7 @@ const editCustomer = (customer) => {
 
   return (
     <div className='custlist'>
+      <br></br>
         <h4><button style={{ cursor: 'pointer' }}
                onClick={() => setShowCustomers(!showCustomers)}>Asiakkaat</button>
 

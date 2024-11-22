@@ -14,7 +14,19 @@ const [newEmail, setNewEmail] = useState('')
 const [newAccessId, setNewAccessId] = useState(2)
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState('')
+const [confirmPassword, setConfirmPassword] = useState('') // Salasanan vahvistuskenttä
+const [passwordMatch, setPasswordMatch] = useState(true) // Seuraa onko salasanat samat
 
+// Tarkistetaan salasanan ja vahvistuksen yhteensopivuus
+const handlePasswordChange = (event) => {
+    setNewPassword(event.target.value)
+    setPasswordMatch(event.target.value === confirmPassword) // Vertaa salasanan ja vahvistuksen kenttiä
+    }
+
+const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value)
+    setPasswordMatch(newPassword === event.target.value) // Vertaa salasanan ja vahvistuksen kenttiä
+    }
 
 // onSubmit tapahtumankäsittelijä funktio
 const handleSubmit = (event) => {
@@ -59,33 +71,39 @@ const handleSubmit = (event) => {
 
   return (
     <div id="addNew">
-       <h2>User add</h2>
+       <h2>Lisää käyttäjä</h2>
 
        <form onSubmit={handleSubmit}>
             <div>
-                <input type="text" value={newFirstname} placeholder="First name"
+                <input type="text" value={newFirstname} placeholder="Etunimi"
                     onChange={({ target }) => setNewFirstname(target.value)} required />
             </div>
             <div>
-                <input type="text" value={newLastname} placeholder="Last name"
+                <input type="text" value={newLastname} placeholder="Sukunimi"
                     onChange={({ target }) => setNewLastname(target.value)} required />
             </div>
             <div>
-                <input type="email" value={newEmail} placeholder="Email"
+                <input type="email" value={newEmail} placeholder="Sähköposti"
                     onChange={({ target }) => setNewEmail(target.value)} />
             </div>
             <div>
-                <input type="number" value={newAccessId} placeholder="Access level"
-                    onChange={({ target }) => setNewAccessId(target.value)} />
+                <input type="number" value={newAccessId} placeholder="AccessId"
+                    onChange={({ target }) => setNewAccessId(target.value)} required />
             </div>
             <div>
-                <input type="text" value={newUsername} placeholder="Username"
-                    onChange={({ target }) => setNewUsername(target.value)} />
+                <input type="text" value={newUsername} placeholder="Käyttäjätunnus"
+                    onChange={({ target }) => setNewUsername(target.value)} required/>
             </div>
             <div>
-                <input type="password" value={newPassword} placeholder="Password"
-                    onChange={({ target }) => setNewPassword(target.value)} />
+                <input type="password" value={newPassword} placeholder="Salasana"
+                    onChange={handlePasswordChange} required/>
             </div>
+            <div>
+                <input type="password" value={confirmPassword} placeholder="Vahvista salasana"
+                    onChange={handleConfirmPasswordChange} required/>
+            </div>
+                    {/* Tämä ilmoitus tulee jos salasanat eivät täsmää!! */}
+        {!passwordMatch && <div className='passworderror'>Salasanat eivät täsmää!</div>}
             
             <button type='submit' value='save'>Tallenna</button>
             <button value='back' onClick={() => setLisäystila(false)}>Takaisin</button>
