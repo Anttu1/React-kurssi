@@ -157,13 +157,15 @@ const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
           <button type="button" onClick={() => setMuokkaustila(false)}>Peruuta</button>
         </form>
       ) : (
-        <div>
+        <div className='card'>
+          <p>Käyttäjätunnus: {user.userName}</p>
           <p>Etunimi: {user.firstName}</p>
           <p>Sukunimi: {user.lastName}</p>
           <p>Sähköposti: {user.email}</p>
           <p>Access Level: {user.accessId}</p>
-          <button onClick={() => setMuokkaustila(true)}>Muokkaa</button>
-          <button onClick={() => deleteUser(user)}>Poista</button>
+          <br></br>
+          <button className="userbtn"onClick={() => setMuokkaustila(true)}>Muokkaa</button>
+          <button className="userbtn"onClick={() => deleteUser(user)}>Poista</button>
         </div>
       )}
     </div>

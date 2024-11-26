@@ -89,12 +89,14 @@ const EmployeeAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
                 <input type="text" value={newTitleofCourtesy} placeholder="Puhutteluarvo"
                     onChange={({ target }) => setNewTitleOfCourtesy(target.value)} />
             </div>
+            Syntymäaika:
             <div>
-                <input type="date" value={newBirthDate} placeholder="Syntymäaika"
+                <input type="date" value={newBirthDate}
                     onChange={({ target }) => setNewBirthDate(target.value)} />
             </div>
+            Palkkauspäivä:
             <div>
-                <input type="date" value={newHireDate} placeholder="Palkkauspäivä"
+                <input type="date" value={newHireDate}
                     onChange={({ target }) => setNewHireDate(target.value)} />
             </div>
             <div>
