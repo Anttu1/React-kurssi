@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:7219/api/customers"
+const baseUrl = "https://nwanttu-fvbyb0avfdbyfuc4.canadacentral-01.azurewebsites.net/api/customers"
 
 let token = null
 //Tätä metodia kutsutaan aina ennen kuin tehdään muu pyyntö serviceen
