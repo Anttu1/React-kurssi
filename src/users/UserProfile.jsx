@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import UserService from '../services/User'
+import { FaEye, FaEyeSlash } from "react-icons/fa"
+import md5 from 'md5'
 
 const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
   const [user, setUser] = useState(null)
   const [muokkaustila, setMuokkaustila] = useState(false)
-  const [newFirstName, setNewFirstName] = useState('')
-  const [newLastName, setNewLastName] = useState('')
-  const [newEmail, setNewEmail] = useState('')
-  const [newPassWord, setNewPassWord] = useState('')
   const [oldPassWord, setOldPassWord] = useState('')  // Vanha salasana
+  const [changePassWord, setChangePassWord] = useState('') // Uusi salasana
   const [passwordError, setPasswordError] = useState('') // Virheilmoitus salasanalle
+  const [showOldPassword, setShowOldPassword] = useState(false) // Näytä/piilota salasana
+  const [showChangePassword, setShowChangePassword] = useState(false) 
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -18,10 +19,6 @@ const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
     UserService.getUserById(userId)
       .then(data => {
         setUser(data)
-        setNewFirstName(data.firstName)
-        setNewLastName(data.lastName)
-        setNewEmail(data.email)
-        setNewPassWord(data.password) // Varmista, että tämä ei näy UI:ssa
       })
       .catch(error => {
         console.error('Error fetching user data', error)
@@ -33,35 +30,31 @@ const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
 
   const handleEditSubmit = (event) => {
     event.preventDefault()
-
-    // Tarkista vanhan salasanan oikeellisuus
-    if (oldPassWord !== user.password) {
+    var updatedPassWord = {
+      password: md5(changePassWord),
+    }
+    console.log('Vanha salasana syötetty:', oldPassWord);  // Tarkista käyttäjän syöttämä salasana
+    console.log('Tallennettu salasana (salattuna):', user.passWord);  // Tallennettu salasana, joka on salattu
+    console.log('Vertailu:', md5(oldPassWord), '==', user.passWord);  // Tarkista, mitä vertaillaan
+    console.log(updatedPassWord)
+    if (oldPassWord !== user.passWord) {
       setPasswordError('Vanha salasana on väärin')
       return
     }
 
-    const updatedUser = {
-      ...user,
-      firstName: newFirstName,
-      lastName: newLastName,
-      email: newEmail,
-      passWord: newPassWord,  // Päivitä salasana vain, jos se on oikein
-    }
-
-    UserService.update(user.userId, updatedUser)
+    UserService.updateUser(user.userId, updatedPassWord)
       .then(() => {
-        setUser(updatedUser)
-        setMessage('Käyttäjän tiedot päivitetty onnistuneesti')
+        setChangePassWord(updatedPassWord)
+        setMessage('Käyttäjän salasana päivitetty onnistuneesti')
         setIsPositive(true)
         setShowMessage(true)
         setMuokkaustila(false)
         setPasswordError('') // Tyhjennä virheilmoitus
-
         setTimeout(() => setShowMessage(false), 5000)
       })
       .catch((error) => {
         console.error('Error updating user data', error)
-        setMessage('Virhe tietojen päivityksessä')
+        setMessage('Virhe salasanan päivityksessä')
         setIsPositive(false)
         setShowMessage(true)
       })
@@ -112,45 +105,27 @@ const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
       <h2>Käyttäjäprofiili</h2><br></br>
       {muokkaustila ? (
         <form onSubmit={handleEditSubmit}>
-          Etunimi:
-          <div>
-            <input
-              type="text"
-              value={newFirstName}
-              onChange={({ target }) => setNewFirstName(target.value)}
-            />
-          </div>
-          Sukunimi:
-          <div>
-            <input
-              type="text"
-              value={newLastName}
-              onChange={({ target }) => setNewLastName(target.value)}
-            />
-          </div>
-          Sähköposti:
-          <div>
-            <input
-              type="email"
-              value={newEmail}
-              onChange={({ target }) => setNewEmail(target.value)}
-            />
-          </div>
           Vanha salasana:
-          <div>
+          <div className='form-field-container'>
             <input
-              type="password"
+              type={showOldPassword ? 'text' : 'password'}
               value={oldPassWord}
               onChange={({ target }) => setOldPassWord(target.value)}
             />
+            <span onClick={() => setShowOldPassword(!showOldPassword)} className="password-toggle-icon">
+              {showOldPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
           Uusi salasana:
-          <div>
+          <div className='form-field-container'>
             <input
-              type="password"
-              value={newPassWord}
-              onChange={({ target }) => setNewPassWord(target.value)}
+              type={showChangePassword ? 'text' : 'password'}
+              value={changePassWord}
+              onChange={({ target }) => setChangePassWord(target.value)}
             />
+            <span onClick={() => setShowChangePassword(!showChangePassword)} className="password-toggle-icon">
+              {showChangePassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
           {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
           <button type="submit">Tallenna</button>
@@ -164,8 +139,8 @@ const UserProfile = ({ setMessage, setIsPositive, setShowMessage }) => {
           <p>Sähköposti: {user.email}</p>
           <p>Access Level: {user.accessId}</p>
           <br></br>
-          <button className="userbtn"onClick={() => setMuokkaustila(true)}>Muokkaa</button>
-          <button className="userbtn"onClick={() => deleteUser(user)}>Poista</button>
+          <button className="userbtn"onClick={() => setMuokkaustila(true)}>Vaihda salasana</button>
+          <button className="userbtn"onClick={() => deleteUser(user)}>Poista käyttäjä</button>
         </div>
       )}
     </div>

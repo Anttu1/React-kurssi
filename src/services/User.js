@@ -45,12 +45,12 @@ const update = (object) => {
     }
     return axios.put(`${baseUrl}/${object.userId}`, object, config)
 }
-// Päivittää käyttäjän tiedot yksittäisen käyttäjän ID:n perusteella
-const updateUser = (userId, updatedUser) => {
+// Päivittää käyttäjän salasanan yksittäisen käyttäjän ID:n perusteella
+const updateUser = (userId, updatedPassWord) => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.put(`${baseUrl}/${userId}`, updatedUser, config);
+    return axios.put(`${baseUrl}/${userId}`, updatedPassWord, config);
 };
 
 // Poistaa käyttäjän

@@ -61,6 +61,7 @@ button:focus-visible {
   }
 }
 th, td {
+  transition: 0.3s;
   border: 1px solid rgb(29, 94, 92);
   padding: 15px;
 }
@@ -71,6 +72,8 @@ input {
   margin-right: auto;
 }
 table {
-  margin-left: auto;
-  margin-right: auto;
+  min-width: 600px;
+   margin-left: auto;
+  margin-right: auto; 
+  transition: 0.3s;
 }

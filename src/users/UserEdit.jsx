@@ -28,10 +28,10 @@ const handleSubmit = (event) => {
 
   console.log(newUser)
 
-  UserService.create(newUser)
+  UserService.update(newUser)
   .then(response => {
     if (response.status === 200) {
-     setMessage(`Lisätty uusi käyttäjä: ${newUser.firstname} ${newUser.lastname}`)
+     setMessage(`Päivitetty käyttäjä: ${newUser.firstname} ${newUser.lastname}`)
      setIsPositive(true)
      setShowMessage(true)
     
