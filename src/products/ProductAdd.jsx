@@ -126,7 +126,7 @@ const ProductAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage})
                 <div>
                 Saatavilla :
              <select 
-                    value={newDiscontinued ? 'Kyllä' : 'Ei'}
+                    value={newDiscontinued ? 'Kyllä' : 'Ei'} name="Saatavilla"
                     onChange={({ target }) => setNewDiscontinued(target.value === 'Kyllä')}
             >
                     <option value="Ei">Ei</option>

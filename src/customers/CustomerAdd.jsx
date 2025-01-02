@@ -53,6 +53,7 @@ const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
           })
           .catch(error => {
             setMessage(error)
+            console.log(error)
             setIsPositive(false)
             setShowMessage(true)
     

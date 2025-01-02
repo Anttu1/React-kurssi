@@ -91,12 +91,12 @@ const EmployeeAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
             </div>
             Syntymäaika:
             <div>
-                <input type="date" value={newBirthDate}
+                <input type="date" value={newBirthDate} name="Syntymäaika"
                     onChange={({ target }) => setNewBirthDate(target.value)} />
             </div>
             Palkkauspäivä:
             <div>
-                <input type="date" value={newHireDate}
+                <input type="date" value={newHireDate} name="Palkkauspäivä"
                     onChange={({ target }) => setNewHireDate(target.value)} />
             </div>
             <div>

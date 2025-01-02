@@ -60,19 +60,19 @@ const handleSubmit = (event) => {
 
        <form onSubmit={handleSubmit}>
             <div>
-                <input type="text" value={newFirstName} placeholder="First name"
+                <input type="text" value={newFirstName} placeholder="Etunimi"
                     onChange={({ target }) => setNewFirstName(target.value)} required />
             </div>
             <div>
-                <input type="text" value={newLastName} placeholder="Last name"
+                <input type="text" value={newLastName} placeholder="Sukunimi"
                     onChange={({ target }) => setNewLastName(target.value)} required />
             </div>
             <div>
-                <input type="email" value={newEmail} placeholder="Email"
+                <input type="email" value={newEmail} placeholder="Sähköposti"
                     onChange={({ target }) => setNewEmail(target.value)} />
             </div>
             <div>
-                <input type="number" value={newAccessId} placeholder="Access level"
+                <input type="number" value={newAccessId} placeholder="AccessId"
                     onChange={({ target }) => setNewAccessId(target.value)} />
             </div>
               {/* <div>

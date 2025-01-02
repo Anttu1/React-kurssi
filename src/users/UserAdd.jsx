@@ -11,7 +11,7 @@ const UserAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) =>
 const [newFirstname, setNewFirstname] = useState('')
 const [newLastname, setNewLastname] = useState('')
 const [newEmail, setNewEmail] = useState('')
-const [newAccessId, setNewAccessId] = useState(2)
+const [newAccessId, setNewAccessId] = useState('')
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState('')
 const [confirmPassword, setConfirmPassword] = useState('') // Salasanan vahvistuskenttä

@@ -73,7 +73,7 @@ const handleSubmit = (event) => {
             </div>
             Yrityksen nimi:
             <div>
-            <input type="text" value={newCompanyName}
+            <input type="text" value={newCompanyName} name='companyName'
                     onChange={({ target }) => setNewCompanyName(target.value)} required />
             </div>
             Yhteyshenkilö:

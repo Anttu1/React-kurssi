@@ -77,7 +77,7 @@ const EmployeeEdit = ({setMuokkaustila, setIsPositive, setMessage, setShowMessag
             <form onSubmit={handleSubmit}>
                 Etunimi:
             <div>
-                <input type="text" value={newFirstName}
+                <input type="text" value={newFirstName} name="Etunimi"
                     onChange={({ target }) => setNewFirstName(target.value)} required />
             </div>
             Sukunimi:

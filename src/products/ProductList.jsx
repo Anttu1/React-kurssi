@@ -43,7 +43,7 @@ const editProduct = (product) => {
         <h4><button style={{ cursor: 'pointer' }}
                onClick={() => setShowProducts(!showProducts)}>Tuotteet</button>
 
-                {!lisäystila && <button onClick={() => setLisäystila(true)}>Uusi Tuote</button>}</h4>
+                {!lisäystila && <button onClick={() => setLisäystila(true)}>Uusi tuote</button>}</h4>
 
                 {!lisäystila && !muokkaustila &&
                 <input placeholder="Etsi tuotteen nimellä" value={search} onChange={handleSearchInputChange} />
